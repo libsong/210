@@ -1,0 +1,70 @@
+以下出自 uboot 的 README
+
+If the system board that you have is not listed, then you will need
+to port U-Boot to your hardware platform. To do this, follow these
+steps:
+
+1.  Add a new configuration option for your board to the toplevel
+    "Makefile" and to the "MAKEALL" script, using the existing
+    entries as examples. Note that here and at many other places
+    boards and other names are listed in alphabetical sort order. Please
+    keep this order.
+2.  Create a new directory to hold your board specific code. Add any
+    files you need. In your board directory, you will need at least
+    the "Makefile", a "<board>.c", "flash.c" and "u-boot.lds".
+3.  Create a new configuration file "include/configs/<board>.h" for
+    your board
+3.  If you're porting U-Boot to a new CPU, then also create a new
+    directory to hold your CPU specific code. Add any files you need.
+4.  Run "make <board>_config" with your new name.
+5.  Type "make", and you should get a working "u-boot.srec" file
+    to be installed on your target system.
+6.  Debug and solve any problems that might arise.
+    [Of course, this last step is much harder than it sounds.]
+
+
+Testing of U-Boot Modifications, Ports to New Hardware, etc.:
+==============================================================
+
+If you have modified U-Boot sources (for instance added a new board
+or support for new devices, a new CPU, etc.) you are expected to
+provide feedback to the other developers. The feedback normally takes
+the form of a "patch", i. e. a context diff against a certain (latest
+official or latest in the git repository) version of U-Boot sources.
+
+But before you submit such a patch, please verify that your modifi-
+cation did not break existing code. At least make sure that *ALL* of
+the supported boards compile WITHOUT ANY compiler warnings. To do so,
+just run the "MAKEALL" script, which will configure and build U-Boot
+for ALL supported system. Be warned, this will take a while. You can
+select which (cross) compiler to use by passing a `CROSS_COMPILE'
+environment variable to the script, i. e. to use the ELDK cross tools
+you can type
+
+	CROSS_COMPILE=ppc_8xx- MAKEALL
+
+or to build on a native PowerPC system you can type
+
+	CROSS_COMPILE=' ' MAKEALL
+
+When using the MAKEALL script, the default behaviour is to build
+U-Boot in the source directory. This location can be changed by
+setting the BUILD_DIR environment variable. Also, for each target
+built, the MAKEALL script saves two log files (<target>.ERR and
+<target>.MAKEALL) in the <source dir>/LOG directory. This default
+location can be changed by setting the MAKEALL_LOGDIR environment
+variable. For example:
+
+	export BUILD_DIR=/tmp/build
+	export MAKEALL_LOGDIR=/tmp/log
+	CROSS_COMPILE=ppc_8xx- MAKEALL
+
+With the above settings build objects are saved in the /tmp/build,
+log files are saved in the /tmp/log and the source tree remains clean
+during the whole build process.
+
+
+See also "U-Boot Porting Guide" below.
+
+
+
