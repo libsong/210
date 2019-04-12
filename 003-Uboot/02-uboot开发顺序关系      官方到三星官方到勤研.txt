@@ -1,0 +1,81 @@
+
+
+从 http://ftp.denx.de/pub/u-boot/ 下载 u-boot-1.3.4.tar.bz2 解压
+与文件夹 003-Uboot 下的 u-boot 用 beyong compare 进行文件夹比较，得出
+u-boot 中多出几个如下部分:
+	board 	中多出  samsung 文件夹
+					samsung 文件夹多出 qt210 文件夹
+	
+	common 	中多出 ace_sha1.c/cmd_android.c/cmd_fastboot.c/cmd_mmc_fdisk.c/cmd_movi.c/cmd_mtdparts.c/cmd_ubi.c/cmd_usbd.c/cmd_yaffs2.c/env_auto.c/env_movi.c/secure.c 这几个 c 文件，并修改了其中的 Makefile 
+	
+	cpu 	中多出了 s3c24xx/s3c64xx/s5p64xx/s5p644x/s5pc1xx/s5pc11x/ 这几个文件夹
+	
+	doc 	中多出了 README.fastboot 文件
+	
+	drivers/mmc 中多出了 mmc.c/s3c_hsmmc.c 这几个 c 文件
+	
+	drivers/mtd 中多出了 ubi 文件夹以及 medconcat.c/mtdcore.c/mtdpart.c ，这几个文件开头并未说明是 samsung 
+	
+	net 	中多出了 smc911.h 
+	
+	rtc 	中多出了 s3c24xx_rtc.c/s3c64xx_rtc.c/s5p64xx_rtc.c
+	
+	examples 中多出了 smc911x_eeprom 二进制文件以及 smc911x_eeprom.c ，少了 .gitignore 
+	
+	fs		中多出了 yaffs2 文件夹
+	
+	include/asm-arm 中多出了 arch-s3c24xx/arch-s3c64xx/arch-s5p64xx/arch-s5p644x/arch-s5pc1xx/arch-s5pc11x 这几个文件夹
+	include/configs 中多出了 qt210.h/qt210_ubi.h/
+							smdk2416.h/smdk2450.h/smdk6400.h/smdk6410.h/smdk6430.h/smdk6440.h/smdk6442.h/smdk6442c.h/smdkc100.h/smdkc100_256.h/smdkc110_mtd.h/smdkc110_ubi.h/smdkc110ac.h/smdkc110b.h/
+							smdkc110d.h/smdkc110d_mtd.h/smdkc110h.h/smdkv210onenand.h/smdkv210single.h/smdkv210single_ubi.h/smdkv210vogue.h	
+	include/linux 中多出了 mmc 文件夹以及 compat.h/crc32.h/err.h/rbtree.h
+	include/linux/mtd 中多出了 concat.h/partitions.h/s3c_onenand.h/ubi.h 
+	include 中多出了 mtd 文件夹以及多个其他 .h 文件
+	
+	lib_arm 中多出了 rbtree.c 
+	
+多出了 onenand_bl1 文件夹
+多出了 sd_fusing 文件夹
+	
+	tools 中多出了一些文件
+	
+多出了 build_uboot/build_uboot_clean/Changelog_Samsung/image_split/image_split/qt210_config
+
+
+************************
+以上可以猜测，板子附赠的这个 u-boot 是基于 Samsung 官方u-boot更改而来，Samsung 基于u-boot官方1.3.4而来，
+具体差异可参见差异报告 uboot1.3.4与板子带的uboot的Beyongcompare差异报告.html
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

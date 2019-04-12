@@ -1,0 +1,27 @@
+
+led_on.elf:     file format elf32-littlearm
+
+Disassembly of section .text:
+
+d0020010 <_start>:
+d0020010:	e59f0014 	ldr	r0, [pc, #20]	; d002002c <halt+0x4>
+d0020014:	e59f1014 	ldr	r1, [pc, #20]	; d0020030 <halt+0x8>
+d0020018:	e5801000 	str	r1, [r0]
+d002001c:	e59f0010 	ldr	r0, [pc, #16]	; d0020034 <halt+0xc>
+d0020020:	e3a0100f 	mov	r1, #15	; 0xf
+d0020024:	e5801000 	str	r1, [r0]
+
+d0020028 <halt>:
+d0020028:	eafffffe 	b	d0020028 <halt>
+d002002c:	e0200c00 	.word	0xe0200c00
+d0020030:	00001111 	.word	0x00001111
+d0020034:	e0200c04 	.word	0xe0200c04
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00001741 	andeq	r1, r0, r1, asr #14
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000000d 	andeq	r0, r0, sp
+  10:	00543405 	subseq	r3, r4, r5, lsl #8
+  14:	01080206 	tsteq	r8, r6, lsl #4
