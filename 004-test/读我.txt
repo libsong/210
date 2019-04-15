@@ -1,0 +1,6 @@
+
+gcc addheader.c -o addhead
+
+addhead xx.bin 210.bin
+
+write2sd
